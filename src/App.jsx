@@ -1,31 +1,43 @@
 import React, { useState } from 'react';
 
 function App() {
-  const [task, setTask] = useState('');
-  const [tasks, setTasks] = useState([]);
+  const [celsius, setCelsius] = useState('');
+  const [fahrenheit, setFahrenheit] = useState('');
 
-  const handleAddTask = () => {
-    if (task.trim()) {
-      setTasks([...tasks, task]);
-      setTask('');
-    }
+  const handleCelsiusChange = (e) => {
+    const value = e.target.value;
+    setCelsius(value);
+    setFahrenheit(value ? (value * 9) / 5 + 32 : '');
+  };
+
+  const handleFahrenheitChange = (e) => {
+    const value = e.target.value;
+    setFahrenheit(value);
+    setCelsius(value ? ((value - 32) * 5) / 9 : '');
   };
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>To-Do List</h1>
-      <input
-        type="text"
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-        placeholder="Enter a task"
-      />
-      <button onClick={handleAddTask}>Add Task</button>
-      <ul>
-        {tasks.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+      <h1>Temperature Converter</h1>
+      <div>
+        <label>Celsius: </label>
+        <input
+          type="number"
+          value={celsius}
+          onChange={handleCelsiusChange}
+          placeholder="Enter Celsius"
+        />
+      </div>
+      <br />
+      <div>
+        <label>Fahrenheit: </label>
+        <input
+          type="number"
+          value={fahrenheit}
+          onChange={handleFahrenheitChange}
+          placeholder="Enter Fahrenheit"
+        />
+      </div>
     </div>
   );
 }
