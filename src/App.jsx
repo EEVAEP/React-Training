@@ -9,9 +9,6 @@ function App() {
       <br></br><br></br>
       <button onClick= {() => setCount(count -1)}>Decrement</button>
       <br></br><br></br>
-      
-      <button onClick= {() => setCount(count + 3)}>Incre3</button>
-      <br></br><br></br>
       <button onClick= {() => setCount(0)}>Reset</button>
     </div>
   );
